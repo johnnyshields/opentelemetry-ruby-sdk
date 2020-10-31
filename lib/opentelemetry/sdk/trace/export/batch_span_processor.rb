@@ -51,7 +51,7 @@ module OpenTelemetry
             raise ArgumentError if max_export_batch_size > max_queue_size
 
             @exporter = exporter
-            @dispatcher = DispatcherDetector.dispatcher
+            @dispatcher = ::OpenTelemetry::SDK::Trace::Export::DispatcherDetector.dispatcher
             @exporter_timeout_seconds = exporter_timeout_millis / 1000.0
             @mutex = Mutex.new
             @condition = ConditionVariable.new
